@@ -131,6 +131,6 @@
    ###
    ## Sending Tweet!
    #
-   echo "$TWEET" # | twitter tweet
+   echo "$TWEET" | twitter tweet
 
 
