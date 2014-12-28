@@ -18,6 +18,7 @@
    HOUR=`date "+%I"`
    DAY=`date "+%d"`
    MONTH=`date "+%m"`
+   YEAR=`date "+%Y"`
 
    #Two Basic hashtags lists. Some repeated to appear more
    HASHTG1=( \#Arenys \#ArenysdeMar \#Sinera \#GaiaVila \#AdM
@@ -45,13 +46,28 @@
    ## EXTRA TAG! For special days :D 
    #
 
-   if [ $DAY == 01 -a $MONTH == 01 ]; then
-      YEAR=`date "+%Y"`
+   if [ $DAY == 01 -a $MONTH == 01 -a `date "+%H"` == 00 ]; then
+      #Campanades
+      for (( i=1; i<=12; i++ ))
+      do  
+         NUM_LIST1=$(( $RANDOM%${#HASHTG1[*]} ))
+         TWEET="BOM - ${i}a Campanada - Campanar Arenys de Mar ${YEAR} ${HASHTG1[$NUM_LIST1]}"
+         echo "$TWEET" | twitter tweet
+         sleep 2 
+      done
+      BELLS=""
+      MSG="Feliç ${YEAR}. Aquest any seguirem tuitejant les campanes "
+       
+   elif [ $DAY == 01 -a $MONTH == 01 ]; then
       MSG="- Bon Cap d'Any $YEAR " 
       EXTRA_TAG=" #$YEAR" 
 
    elif [ $DAY == 05 -a $MONTH == 01 ]; then
       EXTRA_TAG=" #Naps #Cols" 
+
+   elif [ $DAY == 29 -a $MONTH == 02 ]; then
+      MSG="- $YEAR any de traspàs " 
+      EXTRA_TAG=" #Bixest" 
 
    elif [ $DAY == 21 -a $MONTH == 03 ]; then
       MSG="- Comença l'equinocci de primavera " 
@@ -104,10 +120,29 @@
       MSG="- Per Cap d'Any, pren el raïm amb el campanar d'Arenys de Mar "  
 
    elif [ $DAY == 30 -a $MONTH == 12 ]; then
-      MSG="- Demà prenem el raïm amb el campanar d'Arenys de Mar "  
+      MSG="- Demà tuitejarem les campanades, el raïm amb el campanar d'Arenys "  
+
+   elif [ $DAY == 31 -a $MONTH == 12 -a `date "+%H"` == 23 ]; then
+      MSG="- 1 hora pel canvi d'any. Tuitejarem les campanades! "  
+      EXTRA_TAG=" #raïm "
+      TWEET="$BELLS$MSG$BASIC_HASHTAG$EXTRA_TAG"
+      echo "$TWEET" | twitter tweet
+      #Els Quarts!
+      sleep 59m 
+      sleep 51 
+      for (( i=1; i<=4; i++ ))
+      do  
+         NUM_LIST1=$(( $RANDOM%${#HASHTG1[*]} ))
+         TWEET="Bim Bom - ${i}r Quart - Campanar Arenys de Mar ${HASHTG1[$NUM_LIST1]}"
+         echo "$TWEET" | twitter tweet
+         sleep 2 
+      done
+      BELLS=""
+      MSG=""
+      BASIC_HASHTAG=""
+      EXTRA_TAG=""
 
    elif [ $DAY == 31 -a $MONTH == 12 ]; then
-      YEAR=`date "+%Y"`
       MSG="- El raïm amb el campanar d'Arenys, despedim el $YEAR com cal "  
       EXTRA_TAG=" #raïm "
 
