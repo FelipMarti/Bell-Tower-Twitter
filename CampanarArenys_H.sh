@@ -23,7 +23,7 @@
    #Two Basic hashtags lists. Some repeated to appear more
    HASHTG1=( \#Arenys \#ArenysdeMar \#Sinera \#GaiaVila \#AdM
              \#ViscArenys \#SomDArenys \#SomDeMar \#Setciències
-             \#Sardinetes \#Arenyencs
+             \#Sardinetes \#Arenyencs \#SomVERDS
              \#Arenys \#ArenysdeMar \#SomDeMar \#GaiaVila )
    HASHTG2=( \#Campanar \#Campanes \#Campanades )
    NUM_LIST1=$(( $RANDOM%${#HASHTG1[*]} ))
@@ -77,7 +77,7 @@
       EXTRA_TAG=" #SantJordi #rosa #llibre"
   
    elif [ $DAY == 01 -a $MONTH == 05 ]; then
-      EXTRA_TAG=" #1Maig #treballador"
+      EXTRA_TAG=" #1rDeMaig #treballador"
   
    elif [ $DAY == 21 -a $MONTH == 06 ]; then
       MSG="- Comença el solstici d'estiu " 
@@ -88,7 +88,7 @@
 
    elif [ $DAY == 29 -a $MONTH == 06 ]; then
       MSG="- Crema de la Bota " 
-      EXTRA_TAG=" #SantPere #Crema #Bota"
+      EXTRA_TAG=" #SantPere #Crema #LaBota"
 
    elif [ $DAY == 09 -a $MONTH == 07 ]; then
       MSG="- Honor y Glòria al patró d'Arenys de Mar " 
